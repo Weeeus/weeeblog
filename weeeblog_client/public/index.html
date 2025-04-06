@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <style>
+      .loading-container {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .loading-text {
+        font-family: "-apple-system", "BlinkMacSystemFont", "Roboto", "Helvetica Neue", "微软雅黑", sans-serif;
+        font-size: 18px;
+        color: #6b9eee;
+        margin-top: 15px;
+        letter-spacing: 2px;
+        animation: pulse 1.5s infinite;
+      }
+      
+      .loading-spinner {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+      }
+      
+      .loading-spinner:after {
+        content: " ";
+        display: block;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 4px solid #6b9eee;
+        border-color: #6b9eee transparent #6b9eee transparent;
+        animation: spinner 1.2s linear infinite;
+      }
+      
+      @keyframes spinner {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  </head>
+  <body>
+    <noscript>
+      <strong>
+        We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to continue.
+      </strong>
+    </noscript>
+    <div id="app">
+      <!-- 白屏加载 -->
+      <div class="loading-container">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Weee's Blog</div>
+      </div>
+    </div>
+    <!-- built files will be auto injected -->
+    <% if(NODE_ENV === "production") { %> 
+      <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/vuex/3.5.1/vuex.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.4.7/vue-router.min.js"></script>
+      <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+    <% } %>
+  </body>
+</html>
+
